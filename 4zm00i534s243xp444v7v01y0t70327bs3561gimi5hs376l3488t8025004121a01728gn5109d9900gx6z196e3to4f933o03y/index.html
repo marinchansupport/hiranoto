@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><head><meta charset="UTF-8"></head><body><h2>平野の予定 Hirano’s Schedule</h2>
+
+<p><!-- 1) レイアウト用ラッパ：ここで高さを決める --></p>
+<div class="gcal-wrap">
+<div class="gcal-clip">
+    <!-- 2) 新しい iframe コードに差し替え --><br>
+    <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;ctz=Asia%2FTokyo&amp;showPrint=0&amp;mode=WEEK&amp;showCalendars=0&amp;showTz=0&amp;showTitle=0&amp;src=aGlyYW5vLmNoZW1lQGdtYWlsLmNvbQ&amp;color=%230b8043" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+<p>    <!-- 3) 下端の「＋Google カレンダー」領域を上から覆ってクリック不可にする --></p>
+<div class="gcal-footer-overlay" aria-hidden="true"></div>
+</div>
+</div>
+<style>
+.gcal-wrap {
+  max-width: 100%;
+}
+.gcal-clip {
+  position: relative;
+  width: 100%;
+  height: 720px; /* ← 表示したい見かけの高さをここで調整 */
+  overflow: hidden; /* 下側のボタン部分を見せない */
+  border: 1px solid #777;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+  background: #fff;
+}
+.gcal-clip iframe {
+  width: 100%;
+  height: 760px; /* ← iframe は少しだけ高く（下40px前後をクリップ） */
+  border: 0;
+}
+.gcal-footer-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px; /* ← 埋め込みフッター相当をカバー（押下できなくなる） */
+  pointer-events: auto;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+/* スマホで少し低くする例 */
+@media (max-width: 600px) {
+  .gcal-clip {
+    height: 560px;
+  }
+  .gcal-clip iframe {
+    height: 600px;
+  }
+  .gcal-footer-overlay {
+    height: 44px;
+  }
+}
+</style>
+
+</body></html>
